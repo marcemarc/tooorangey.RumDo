@@ -1,0 +1,12 @@
+Solution/packages/
+Solution/RumBling/App_Data/cache/
+Solution/RumBling/App_Data/NuGetBackup/
+Solution/RumBling/App_Data/TEMP/
+Solution/RumBling/bin/
+Solution/RumBling/obj/Debug/
+Solution/tooorangey.RumBling/obj/Debug/
+Solution/tooorangey.RumBling/bin/
+Solution/tooorangey.RumBling/App_Data/NuGetBackup/
+Solution/.vs/config/applicationhost.config
+Solution/RumBling/App_Data/Logs/
+Solution/RumBling/App_Data/Models/
