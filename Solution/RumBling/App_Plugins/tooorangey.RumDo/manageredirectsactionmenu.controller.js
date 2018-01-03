@@ -50,7 +50,7 @@
                     'Content-Type': 'application/json'
                 }
             }
-            $http.post('/umbraco/backoffice/api/RumBlingApi/CreateRedirect', data, config)
+            $http.post('/umbraco/backoffice/api/RumDoApi/CreateRedirect', data, config)
                 .success(function (data, status, headers, config) {                   
          
                     notificationsService.remove(0);
@@ -86,7 +86,7 @@
             params: parameters
         };
 
-        $http.get('/umbraco/backoffice/api/RumBlingApi/GetContentRedirectUrls', config)
+        $http.get('/umbraco/backoffice/api/RumDoApi/GetContentRedirectUrls', config)
             .success(function (data, status, headers, config) {
                 vm.data.redirects = data;
                 vm.status.hasRedirects = vm.data.redirects.length > 0;

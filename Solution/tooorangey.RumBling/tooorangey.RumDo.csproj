@@ -206,7 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RegisterEvents.cs" />
-    <Compile Include="Controllers\RumBlingApiController.cs" />
+    <Compile Include="Controllers\RumDoApiController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

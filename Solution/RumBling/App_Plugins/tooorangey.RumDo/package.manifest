@@ -1,0 +1,10 @@
+﻿﻿{
+    javascript:[
+        "/app_plugins/tooorangey.RumDo/addredirect.controller.js",
+		"/app_plugins/tooorangey.RumDo/manageredirectsactionmenu.controller.js",
+		"/app_plugins/tooorangey.RumDo/redirecturlcheck.service.js"
+    ],
+	css: [
+	"/app_plugins/tooorangey.RumDo/RumDo.css"
+	]
+}

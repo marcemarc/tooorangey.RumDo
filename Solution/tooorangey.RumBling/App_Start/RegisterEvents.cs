@@ -7,7 +7,7 @@ using Umbraco.Core;
 using Umbraco.Web;
 using Umbraco.Web.Trees;
 
-namespace tooorangey.RumBling.App_Start
+namespace tooorangey.RumDo.App_Start
 {
    public class RegisterEvents : ApplicationEventHandler
     {
@@ -31,7 +31,7 @@ namespace tooorangey.RumBling.App_Start
                     var redirectsMenuItem = new Umbraco.Web.Models.Trees.MenuItem("viewRedirects", "Manage Redirects");
                     redirectsMenuItem.Icon = "reply-arrow";
                     redirectsMenuItem.SeperatorBefore = true;
-                    redirectsMenuItem.AdditionalData.Add("actionView", "/app_plugins/tooorangey.RumBling/ManageRedirectsActionMenu.html");
+                    redirectsMenuItem.AdditionalData.Add("actionView", "/app_plugins/tooorangey.RumDo/ManageRedirectsActionMenu.html");
                     var menuPosition = e.Menu.Items.Count > 9 ? 10 : e.Menu.Items.Count - 1;
                     e.Menu.Items.Insert(menuPosition, redirectsMenuItem);
                 }

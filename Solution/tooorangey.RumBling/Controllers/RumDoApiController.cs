@@ -8,9 +8,9 @@ using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Web.WebApi;
 
-namespace tooorangey.RumBling.Controllers
+namespace tooorangey.RumDo.Controllers
 {
-   public class RumBlingApiController : UmbracoAuthorizedApiController
+   public class RumDoApiController : UmbracoAuthorizedApiController
     {
         [HttpPost]
         public IHttpActionResult CreateRedirect(RedirectInstruction instruction)

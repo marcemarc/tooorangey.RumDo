@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RumBling", "RumBling\RumBling.csproj", "{B9B26AD9-8125-49FC-8301-F304C2E41CC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RumDo", "RumBling\RumDo.csproj", "{B9B26AD9-8125-49FC-8301-F304C2E41CC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tooorangey.RumBling", "tooorangey.RumBling\tooorangey.RumBling.csproj", "{3F3BFC32-6EF8-4659-AF5D-944E0D5E5067}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tooorangey.RumDo", "tooorangey.RumBling\tooorangey.RumDo.csproj", "{3F3BFC32-6EF8-4659-AF5D-944E0D5E5067}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
