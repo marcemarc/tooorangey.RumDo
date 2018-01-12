@@ -1,0 +1,51 @@
+﻿<div class="umb-editor" ng-controller="tooorangey.ManageRedirectsActionMenuController as vm">
+    <div class="umb-dialog-body">
+        <umb-load-indicator ng-if="vm.status.loading">
+        </umb-load-indicator>
+        <div ng-show="vm.status.hasRedirects" class="umb-pane">
+             <p>The following urls in the 'Redirect Url Management Dashboard' will permanently redirect (301) to this content item:</p>
+            <div class="umb-table">
+                <div class="umb-table-head">
+                    <div class="umb-table-row">
+  
+                            <div class="umb-table-cell  not-fixed flx-s1 flx-g1 flx-b4">
+                                Redirected Url
+                            </div>
+                            <div class="umb-table-cell">
+                                
+                            </div>
+                    </div>
+                        </div>
+                        <div class="umb-table-body">
+                            <div class="umb-table-row -solid" ng-repeat="redirect in vm.data.redirects">
+                                <div class="umb-table-cell  not-fixed flx-s1 flx-g1 flx-b4">
+                                    <a href="{{redirect.Url}}"><i ng-class="value.icon" class="icon-out"></i> {{redirect.Url}}</a>
+                                </div>
+                                <div class="umb-table-cell">
+                                    <button type="button" class="umb-era-button umb-button--s -red" ng-click="vm.removeRedirect(redirect)"><localize key="redirectUrls_removeButton">Remove</localize></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div ng-show="vm.status.loaded && !vm.status.hasRedirects" class="umb-pane">
+
+                    <p><strong>No Redirects</strong> - There aren't any redirects in the 'Redirect Url Management Dashboard' for this content item</p>
+
+                </div>
+                <div class="umb-pane">
+                    <h3>Add new redirect</h3>
+                    <p>Manually add a new 301 Permanent redirect to this content item from a relative content Url (NB: Only a url in the format /some/content - and not /some/content.html or images or pdfs etc)</p>
+                    <form class="form" novalidate>
+                        <div class="umb-el-wrap">
+                            <label class="control-label">Url to redirect from:</label>
+                            <input type="text" class="form-control" ng-model="vm.data.redirectFromUrl" prevent-enter-submit no-dirty-check />
+                        </div>
+                    </form>
+                </div>
+            </div>
+    <div class="umb-dialog-footer btn-toolbar umb-btn-toolbar" ng-hide="success">
+        <a class="btn btn-link" ng-click="nav.hideDialog()">Cancel</a> <button ng-show="vm.data.redirectFromUrl.length > 3" class="btn btn-primary" ng-click="vm.addRedirect()">Add Redirect</button>
+    </div>
+</div>
