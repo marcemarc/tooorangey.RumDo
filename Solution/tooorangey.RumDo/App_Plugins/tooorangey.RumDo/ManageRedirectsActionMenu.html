@@ -19,7 +19,7 @@
                         <div class="umb-table-body">
                             <div class="umb-table-row -solid" ng-repeat="redirect in vm.data.redirects">
                                 <div class="umb-table-cell  not-fixed flx-s1 flx-g1 flx-b4">
-                                    <a href="{{redirect.Url}}"><i ng-class="value.icon" class="icon-out"></i> {{redirect.Url}}</a>
+                                    <span>{{redirect.Url}}</span>
                                 </div>
                                 <div class="umb-table-cell">
                                     <button type="button" class="umb-era-button umb-button--s -red" ng-click="vm.removeRedirect(redirect)"><localize key="redirectUrls_removeButton">Remove</localize></button>
