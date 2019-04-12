@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>tooorangey.RumDo</id>
+    <version>1.0.2</version>
+    <title>tooorangey.RumDo</title>
+    <authors>marcemarc</authors>
+    <owners>marcemarc</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/marcemarc/tooorangey.RumDo</projectUrl>
+    <iconUrl>http://tooorangey.co.uk/media/1148/arumdo128.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Umbraco backoffice extension to add Redirects to the core Redirect Url Management dashboard, and view any redirects setup for a page.</description>
+    <summary>Umbraco backoffice extension to add Redirects to the core Redirect Url Management dashboard, and view any redirects setup for a page.</summary>
+    <releaseNotes>
+      - added ability to set the root content node id in the url 
+    </releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>Umbraco Redirects tooorangey RumDo Redirect Url Management</tags>
+  </metadata>
+  <files>
+    <file src="App_Plugins\tooorangey.RumDo\**\*.*" target="content\App_Plugins\tooorangey.RumDo" />
+  </files>
+</package>

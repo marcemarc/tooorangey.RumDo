@@ -213,6 +213,7 @@
     <None Include="app.config" />
     <None Include="App_Plugins\tooorangey.RumDo\package.manifest" />
     <None Include="packages.config" />
+    <None Include="tooorangey.RumDo.nuspec" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
