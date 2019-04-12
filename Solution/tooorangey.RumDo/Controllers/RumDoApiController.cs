@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using Umbraco.Core;
 using Umbraco.Core.Models;
@@ -10,7 +7,7 @@ using Umbraco.Web.WebApi;
 
 namespace tooorangey.RumDo.Controllers
 {
-   public class RumDoApiController : UmbracoAuthorizedApiController
+    public class RumDoApiController : UmbracoAuthorizedApiController
     {
         [HttpPost]
         public IHttpActionResult CreateRedirect(RedirectInstruction instruction)
@@ -50,7 +47,6 @@ namespace tooorangey.RumDo.Controllers
             public string ContentUdi { get; set; }
 
         }
-   
+
     }
 }
-
