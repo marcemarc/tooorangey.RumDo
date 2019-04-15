@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using AutoMapper;
 using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
+using Umbraco.Web.Models.ContentEditing;
 using Umbraco.Web.WebApi;
 
 namespace tooorangey.RumDo.Controllers
@@ -26,8 +28,8 @@ namespace tooorangey.RumDo.Controllers
             {
                 var rootNodeId = GetRootNodeId(instruction, domainService, contentService);
 
-                instruction.RedirectFromUrl = string.IsNullOrWhiteSpace(rootNodeId) 
-                                                ? instruction.RedirectFromUrl 
+                instruction.RedirectFromUrl = string.IsNullOrWhiteSpace(rootNodeId)
+                                                ? instruction.RedirectFromUrl
                                                 : rootNodeId + instruction.RedirectFromUrl;
 
                 redirectUrlService.Register(instruction.RedirectFromUrl, instruction.ContentKey);
@@ -63,12 +65,12 @@ namespace tooorangey.RumDo.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<IRedirectUrl> GetContentRedirectUrls(string contentUdi)
+        public IEnumerable<ContentRedirectUrl> GetContentRedirectUrls(string contentUdi)
         {
-            GuidUdi guidIdi;
-            var contentKey = GuidUdi.TryParse(contentUdi, out guidIdi) ? guidIdi.Guid : default(Guid);
+            var mapper = Mapper.Engine;
+            var contentKey = GuidUdi.TryParse(contentUdi, out var guidIdi) ? guidIdi.Guid : default(Guid);
             var redirectUrlService = Services.RedirectUrlService;
-            var redirects = redirectUrlService.GetContentRedirectUrls(contentKey);
+            var redirects = mapper.Map<IEnumerable<ContentRedirectUrl>>(redirectUrlService.GetContentRedirectUrls(contentKey));
             return redirects;
         }
         public class RedirectInstruction
