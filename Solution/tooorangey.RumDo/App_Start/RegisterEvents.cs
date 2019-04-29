@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Umbraco.Core;
 using Umbraco.Web;
 using Umbraco.Web.Trees;
 
 namespace tooorangey.RumDo.App_Start
 {
-   public class RegisterEvents : ApplicationEventHandler
+    public class RegisterEvents : ApplicationEventHandler
     {
         protected override void ApplicationStarting(UmbracoApplicationBase umbracoApplication, ApplicationContext applicationContext)
         {

@@ -1,45 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
+using AutoMapper;
 using Umbraco.Core;
 using Umbraco.Core.Models;
+using Umbraco.Core.Services;
+using Umbraco.Web.Models.ContentEditing;
 using Umbraco.Web.WebApi;
 
 namespace tooorangey.RumDo.Controllers
 {
-   public class RumDoApiController : UmbracoAuthorizedApiController
+    public class RumDoApiController : UmbracoAuthorizedApiController
     {
         [HttpPost]
         public IHttpActionResult CreateRedirect(RedirectInstruction instruction)
         {
             var redirectUrlService = Services.RedirectUrlService;
+            var domainService = Services.DomainService;
+            var contentService = Services.ContentService;
+
             if (!String.IsNullOrEmpty(instruction.ContentUdi))
             {
-                GuidUdi guidIdi;
-                instruction.ContentKey = GuidUdi.TryParse(instruction.ContentUdi, out guidIdi) ? guidIdi.Guid : default(Guid);
+                instruction.ContentKey = GuidUdi.TryParse(instruction.ContentUdi, out var guidIdi) ? guidIdi.Guid : default(Guid);
             }
             try
             {
+                var rootNodeId = GetRootNodeId(instruction, domainService, contentService);
+
+                instruction.RedirectFromUrl = string.IsNullOrWhiteSpace(rootNodeId)
+                                                ? instruction.RedirectFromUrl
+                                                : rootNodeId + instruction.RedirectFromUrl;
 
                 redirectUrlService.Register(instruction.RedirectFromUrl, instruction.ContentKey);
+
                 return Ok();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
         }
-        [HttpGet]
-        public IEnumerable<IRedirectUrl> GetContentRedirectUrls(string contentUdi)
+
+        private string GetRootNodeId(RedirectInstruction instruction, IDomainService domainService, IContentService contentService)
         {
-            GuidUdi guidIdi;
-            var contentKey = GuidUdi.TryParse(contentUdi, out guidIdi) ? guidIdi.Guid : default(Guid);
+            var rootNodeId = string.Empty;
+            var domains = domainService.GetAll(true).Where(x => x.RootContentId.HasValue).ToList();
+
+            if (domains.Any())
+            {
+                var content = contentService.GetById(instruction.ContentKey);
+                if (content == null) throw new Exception("Content item does not exist");
+
+                var pathNodeIds = content.Path.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+                if (pathNodeIds.Any())
+                {
+                    var assignedDomain = domains.FirstOrDefault(x => pathNodeIds.Contains(x.RootContentId?.ToString()));
+                    rootNodeId = assignedDomain?.RootContentId?.ToString() ?? string.Empty;
+                }
+            }
+
+            return rootNodeId;
+        }
+
+        [HttpGet]
+        public IEnumerable<ContentRedirectUrl> GetContentRedirectUrls(string contentUdi)
+        {
+            var mapper = Mapper.Engine;
+            var contentKey = GuidUdi.TryParse(contentUdi, out var guidIdi) ? guidIdi.Guid : default(Guid);
             var redirectUrlService = Services.RedirectUrlService;
-            var redirects = redirectUrlService.GetContentRedirectUrls(contentKey);
+            var redirects = mapper.Map<IEnumerable<ContentRedirectUrl>>(redirectUrlService.GetContentRedirectUrls(contentKey));
             return redirects;
         }
         public class RedirectInstruction
@@ -50,7 +81,6 @@ namespace tooorangey.RumDo.Controllers
             public string ContentUdi { get; set; }
 
         }
-   
+
     }
 }
-
