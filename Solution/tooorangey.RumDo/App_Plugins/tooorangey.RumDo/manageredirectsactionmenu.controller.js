@@ -21,7 +21,7 @@
             var toggleConfirm = confirm(value);
 
             if (toggleConfirm) {
-                redirectUrlsResource.deleteRedirectUrl(redirectToDelete.Key).then(function () {
+                redirectUrlsResource.deleteRedirectUrl(redirectToDelete.redirectId).then(function () {
 
                     var index = vm.data.redirects.indexOf(redirectToDelete);
                     vm.data.redirects.splice(index, 1);

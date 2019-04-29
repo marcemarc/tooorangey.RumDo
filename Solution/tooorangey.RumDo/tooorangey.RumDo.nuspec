@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>tooorangey.RumDo</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>tooorangey.RumDo</title>
     <authors>marcemarc, prjseal</authors>
     <owners>marcemarc</owners>
@@ -13,7 +13,7 @@
     <description>Umbraco backoffice extension to add Redirects to the core Redirect Url Management dashboard, and view any redirects setup for a page.</description>
     <summary>Umbraco backoffice extension to add Redirects to the core Redirect Url Management dashboard, and view any redirects setup for a page.</summary>
     <releaseNotes>
-      - fixed the url in Manage Redirects action menu
+      - fixed the remove redirect action in the Manage Redirects action menu
     </releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>Umbraco Redirects tooorangey RumDo Redirect Url Management</tags>
